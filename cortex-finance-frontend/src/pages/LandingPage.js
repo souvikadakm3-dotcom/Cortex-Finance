@@ -6,13 +6,13 @@ import './LandingPage.css';
 const LandingPage = () => {
   return (
     <div className="landing-page">
-      <nav className="navbar glass-panel">
-        <div className="logo">
-          <Activity className="cyan" size={28} />
+      <nav className="flex justify-between items-center px-12 py-4 mx-12 mt-6 mb-6 rounded-full z-10 glass-panel relative">
+        <div className="flex items-center gap-3 text-2xl font-bold tracking-tight">
+          <Activity className="text-cyan-400" size={28} />
           <span>Cortex</span>
         </div>
-        <div className="nav-links">
-          <Link to="/login" className="nav-link">Log In</Link>
+        <div className="flex items-center gap-6">
+          <Link to="/login" className="text-gray-400 font-medium hover:text-white transition-colors duration-300">Log In</Link>
           <Link to="/signup" className="btn btn-primary">Sign Up</Link>
         </div>
       </nav>
