@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
-import { ArrowUpRight, ArrowDownRight, Wallet, TrendingUp, AlertTriangle, Repeat, Zap, Loader2 } from 'lucide-react';
+import { ArrowUpRight, ArrowDownRight, Wallet, TrendingUp, AlertTriangle, Repeat, Zap, Loader2, Download } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
 import Chatbot from './Chatbot';
 import api from '../api/mockService';
@@ -38,6 +38,39 @@ const DashboardOverview = () => {
     fetchData();
   }, []);
 
+  const exportToCSV = () => {
+    if (!transactions.length) return;
+    
+    // Create CSV content
+    const headers = ['Date', 'Category', 'Description', 'Amount', 'Type', 'Status'];
+    const csvRows = [headers.join(',')];
+    
+    transactions.forEach(tx => {
+      // Wrap values in quotes to handle commas
+      const row = [
+        `"${tx.date}"`,
+        `"${tx.category}"`,
+        `"${tx.asset}"`,
+        `"${tx.value}"`,
+        `"${tx.type}"`,
+        `"${tx.status}"`
+      ];
+      csvRows.push(row.join(','));
+    });
+    
+    const csvString = csvRows.join('\n');
+    const blob = new Blob([csvString], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.setAttribute('hidden', '');
+    a.setAttribute('href', url);
+    a.setAttribute('download', 'cortex_financial_report.csv');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
   if (loading) {
     return (
       <div className="dashboard-main flex-center">
@@ -54,14 +87,20 @@ const DashboardOverview = () => {
       transition={{ duration: 0.5 }}
       className="dashboard-main"
     >
-      <header className="dashboard-header">
+      <header className="dashboard-header flex justify-between items-center mb-8">
         <div>
-          <h1 className="greeting">Financial Overview</h1>
-          <p className="subtitle">AI-generated summary of your recent bank statement.</p>
+          <h1 className="greeting text-3xl font-bold">Financial Overview</h1>
+          <p className="subtitle text-gray-400">AI-generated summary of your recent bank statement.</p>
         </div>
-        <div className="ai-status">
-          <Zap size={16} className="cyan" />
-          <span>AI Analysis Complete</span>
+        <div className="flex items-center gap-4">
+          <div className="ai-status flex items-center gap-2 bg-blue-900/30 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/30">
+            <Zap size={16} />
+            <span className="text-sm font-medium">AI Analysis Complete</span>
+          </div>
+          <button onClick={exportToCSV} className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg border border-gray-700 transition-colors">
+            <Download size={18} />
+            Export Report
+          </button>
         </div>
       </header>
       
