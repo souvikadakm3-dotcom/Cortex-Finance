@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Activity, Mail, Lock, ArrowRight } from 'lucide-react';
+import { Activity, Mail, Lock, User, ArrowRight } from 'lucide-react';
 import './Auth.css';
 
-const Login = () => {
+const Signup = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
-    // Simulate login
+    // Simulate signup
     navigate('/upload');
   };
 
@@ -28,11 +29,22 @@ const Login = () => {
       >
         <div className="auth-header">
           <Activity className="logo-icon" size={36} />
-          <h2>Welcome Back</h2>
-          <p>Enter your credentials to access your AI dashboard</p>
+          <h2>Create Account</h2>
+          <p>Join Cortex to unlock AI-powered financial intelligence</p>
         </div>
         
-        <form onSubmit={handleLogin} className="auth-form">
+        <form onSubmit={handleSignup} className="auth-form">
+          <div className="input-group">
+            <User size={20} className="input-icon" />
+            <input 
+              type="text" 
+              placeholder="Full Name" 
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required 
+            />
+          </div>
+
           <div className="input-group">
             <Mail size={20} className="input-icon" />
             <input 
@@ -48,15 +60,11 @@ const Login = () => {
             <Lock size={20} className="input-icon" />
             <input 
               type="password" 
-              placeholder="Password" 
+              placeholder="Create Password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required 
             />
-          </div>
-          
-          <div className="auth-actions">
-            <a href="#" className="forgot-password">Forgot password?</a>
           </div>
           
           <motion.button 
@@ -65,16 +73,16 @@ const Login = () => {
             className="btn btn-primary auth-submit" 
             type="submit"
           >
-            Sign In <ArrowRight size={20} />
+            Create Account <ArrowRight size={20} />
           </motion.button>
         </form>
         
         <div className="auth-footer">
-          Don't have an account? <Link to="/signup" className="text-gradient">Sign up here</Link>
+          Already have an account? <Link to="/login" className="text-gradient">Sign in</Link>
         </div>
       </motion.div>
     </div>
   );
 };
 
-export default Login;
+export default Signup;
