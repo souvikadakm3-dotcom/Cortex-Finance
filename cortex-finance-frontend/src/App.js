@@ -1,3 +1,5 @@
+// src/App.js
+
 import React from "react";
 
 import {
@@ -6,12 +8,16 @@ import {
   Route
 } from "react-router-dom";
 
+/* Pages */
+
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Sign from "./pages/Sign";
 import Dashboard from "./pages/Dashboard";
+import Upload from "./pages/Upload";
 
 function App() {
+
   return (
 
     <BrowserRouter>
@@ -36,7 +42,13 @@ function App() {
           element={<Sign />}
         />
 
-        {/* Dashboard */}
+        {/* Upload Page */}
+        <Route
+          path="/upload"
+          element={<Upload />}
+        />
+
+        {/* Dashboard Page */}
         <Route
           path="/dashboard"
           element={<Dashboard />}
