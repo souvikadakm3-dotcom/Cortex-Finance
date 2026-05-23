@@ -1,65 +1,51 @@
-import { useState } from "react";
+// src/pages/Login.js
 
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+import React from "react";
+import "../index.css";
 
-  const handleLogin = () => {
-    console.log(email, password);
-  };
-
+function Login() {
   return (
-    <div style={styles.container}>
-      <div style={styles.card}>
-        <h2>Login</h2>
+    <div className="auth-container">
 
+      <div className="auth-card">
+
+        {/* Title */}
+        <h1 className="auth-title">
+          Login
+        </h1>
+
+        {/* Email Input */}
         <input
           type="email"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-          style={styles.input}
+          placeholder="Enter Email"
+          className="auth-input"
         />
 
+        {/* Password Input */}
         <input
           type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          style={styles.input}
+          placeholder="Enter Password"
+          className="auth-input"
         />
 
-        <button onClick={handleLogin} style={styles.button}>
+        {/* Login Button */}
+        <button className="auth-button">
           Login
         </button>
+
+        {/* Signup Link */}
+        <p className="auth-text">
+          Don't have an account?
+
+          <a href="/signup" className="auth-link">
+            Sign Up
+          </a>
+        </p>
+
       </div>
+
     </div>
   );
 }
 
-const styles = {
-  container: {
-    display: "flex",
-    height: "100vh",
-    justifyContent: "center",
-    alignItems: "center",
-    background: "#f5f6fa",
-  },
-  card: {
-    padding: 20,
-    borderRadius: 10,
-    background: "white",
-    width: 300,
-    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-  },
-  input: {
-    width: "100%",
-    padding: 10,
-    margin: "10px 0",
-  },
-  button: {
-    width: "100%",
-    padding: 10,
-    background: "blue",
-    color: "white",
-    border: "none",
-  },
-};
+export default Login;
