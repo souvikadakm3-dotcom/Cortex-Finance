@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Cortex-Finance/static/css/main.fe1f517b.css",
+    "main.js": "/Cortex-Finance/static/js/main.03baf7ec.js",
+    "static/js/453.1408cd82.chunk.js": "/Cortex-Finance/static/js/453.1408cd82.chunk.js",
+    "static/media/axios.cjs": "/Cortex-Finance/static/media/axios.d94d31fb96e51b2dbcab.cjs",
+    "index.html": "/Cortex-Finance/index.html",
+    "main.fe1f517b.css.map": "/Cortex-Finance/static/css/main.fe1f517b.css.map",
+    "main.03baf7ec.js.map": "/Cortex-Finance/static/js/main.03baf7ec.js.map",
+    "453.1408cd82.chunk.js.map": "/Cortex-Finance/static/js/453.1408cd82.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fe1f517b.css",
+    "static/js/main.03baf7ec.js"
+  ]
+}
