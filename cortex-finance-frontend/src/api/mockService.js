@@ -36,7 +36,12 @@ const insightsData = {
   overspending: {
     category: "Food/Dining",
     percentage: 40,
-    message: "You spent 40% more on Food/Dining this weekend compared to last month."
+    message: "You spent 40% more on Food/Dining this weekend compared to last month.",
+    items: [
+      { name: "Swiggy Delivery", amount: 1250, date: "Sat, 8:00 PM" },
+      { name: "Starbucks", amount: 840, date: "Sun, 10:30 AM" },
+      { name: "Zomato", amount: 950, date: "Sun, 9:00 PM" }
+    ]
   },
   recurring: [
     { service: "Netflix", amount: 649 },

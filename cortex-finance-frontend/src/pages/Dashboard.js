@@ -153,19 +153,50 @@ const DashboardOverview = () => {
           <Zap size={20} className="text-accentCyan" /> AI Insights & Recommendations
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 flex gap-4 items-start">
-            <div className="p-2 bg-red-500/20 rounded-lg text-red-400 mt-1"><AlertTriangle size={18} /></div>
-            <div>
-              <h4 className="font-semibold text-white mb-1">Overspending Detected</h4>
-              <p className="text-sm text-red-200/80">{insights?.overspending.message}</p>
+          <div className="bg-red-500/5 border border-red-500/20 rounded-xl p-5 flex flex-col gap-3">
+            <div className="flex gap-4 items-start">
+              <div className="p-2 bg-red-500/20 rounded-lg text-red-400 mt-1 shrink-0"><AlertTriangle size={18} /></div>
+              <div>
+                <h4 className="font-semibold text-white mb-1">Overspending Detected</h4>
+                <p className="text-sm text-red-200/80">{insights?.overspending.message}</p>
+              </div>
             </div>
+            {insights?.overspending?.items && (
+              <div className="mt-2 pl-14 pr-2">
+                <p className="text-xs font-semibold text-red-300/70 mb-2 uppercase tracking-wider">Top Contributors</p>
+                <div className="space-y-2">
+                  {insights.overspending.items.map((item, idx) => (
+                    <div key={idx} className="flex justify-between items-center text-sm bg-red-950/30 p-2 rounded-lg border border-red-500/10">
+                      <span className="text-red-100">{item.name} <span className="text-red-300/50 text-xs ml-1">({item.date})</span></span>
+                      <span className="font-medium text-red-400">₹{item.amount}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
-          <div className="bg-accentCyan/5 border border-accentCyan/20 rounded-xl p-4 flex gap-4 items-start">
-            <div className="p-2 bg-accentCyan/20 rounded-lg text-accentCyan mt-1"><Repeat size={18} /></div>
-            <div>
-              <h4 className="font-semibold text-white mb-1">Recurring Payments</h4>
-              <p className="text-sm text-accentCyan/80">Identified {insights?.recurring.length} active subscriptions totaling ₹{insights?.totalRecurring}/mo.</p>
+          
+          <div className="bg-accentCyan/5 border border-accentCyan/20 rounded-xl p-5 flex flex-col gap-3">
+            <div className="flex gap-4 items-start">
+              <div className="p-2 bg-accentCyan/20 rounded-lg text-accentCyan mt-1 shrink-0"><Repeat size={18} /></div>
+              <div>
+                <h4 className="font-semibold text-white mb-1">Recurring Payments</h4>
+                <p className="text-sm text-accentCyan/80">Identified {insights?.recurring?.length || 0} active subscriptions totaling ₹{insights?.totalRecurring}/mo.</p>
+              </div>
             </div>
+            {insights?.recurring && insights.recurring.length > 0 && (
+              <div className="mt-2 pl-14 pr-2">
+                <p className="text-xs font-semibold text-accentCyan/60 mb-2 uppercase tracking-wider">Active Subscriptions</p>
+                <div className="space-y-2">
+                  {insights.recurring.map((sub, idx) => (
+                    <div key={idx} className="flex justify-between items-center text-sm bg-accentCyan/10 p-2 rounded-lg border border-accentCyan/10">
+                      <span className="text-cyan-50">{sub.service}</span>
+                      <span className="font-medium text-accentCyan">₹{sub.amount}/mo</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
