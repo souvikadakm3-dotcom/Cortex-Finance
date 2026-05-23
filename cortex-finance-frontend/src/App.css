@@ -1,38 +1,647 @@
-.App {
-  text-align: center;
+/* src/App.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* =========================
+   LOGIN & SIGNUP
+========================= */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.auth-container {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  background: linear-gradient(to right, #0f172a, #1e293b);
+}
+
+.auth-card {
+  width: 350px;
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 20px rgba(0,0,0,0.4);
+}
+
+.auth-title {
+  color: white;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 30px;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background: #334155;
+  color: white;
+  font-size: 15px;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #6366f1;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-button:hover {
+  background: #4f46e5;
+}
+
+.auth-text {
+  color: #cbd5e1;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.auth-link {
+  color: #818cf8;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard-container {
+  min-height: 100vh;
+  background: #0f172a;
+  padding: 20px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Navbar */
+
+.dashboard-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
+.dashboard-logo {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  border: none;
+  background: #ef4444;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: #dc2626;
+}
+
+/* Welcome Section */
+
+.welcome-section {
+  margin-bottom: 30px;
+}
+
+.welcome-section h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.welcome-section p {
+  color: #cbd5e1;
+}
+
+/* Cards */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.summary-card {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+}
+
+.summary-card h3 {
+  margin-bottom: 10px;
+  color: #cbd5e1;
+}
+
+.summary-card p {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Transactions */
+
+.transaction-section {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+}
+
+.transaction-section h2 {
+  margin-bottom: 20px;
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #334155;
+}
+
+.transaction-table th {
+  color: #94a3b8;
+}
+
+/* AI Insights */
+
+.insight-section {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 15px;
+}
+
+.insight-section h2 {
+  margin-bottom: 20px;
+}
+
+.insight-card {
+  background: #334155;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  color: #e2e8f0;
+}
+
+/* =========================
+   CHATBOT BUTTON
+========================= */
+
+.chatbot-open-btn {
+  margin-top: 20px;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  background: #6366f1;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.chatbot-open-btn:hover {
+  background: #4f46e5;
+  transform: scale(1.05);
+}
+
+/* =========================
+   LANDING PAGE
+========================= */
+
+.landing-container {
+  min-height: 100vh;
+  background: #0f172a;
+  color: white;
+  padding: 20px;
+}
+
+/* Navbar */
+
+.landing-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.landing-logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: #818cf8;
+}
+
+.nav-button {
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #334155;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-button:hover {
+  background: #475569;
+}
+
+.signup-btn {
+  background: #6366f1;
+}
+
+.signup-btn:hover {
+  background: #4f46e5;
+}
+
+/* Hero Section */
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.hero-title {
+  font-size: 60px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero-text {
+  font-size: 20px;
+  color: #cbd5e1;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.7;
+}
+
+.hero-button {
+  margin-top: 30px;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 12px;
+  background: #6366f1;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-button:hover {
+  background: #4f46e5;
+  transform: scale(1.05);
+}
+
+/* Features */
+
+.feature-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 100px;
+}
+
+.feature-card {
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+}
+
+.feature-card h2 {
+  margin-bottom: 15px;
+}
+
+.feature-card p {
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+/* Workflow */
+
+.workflow-section {
+  text-align: center;
+}
+
+.workflow-title {
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+.workflow-steps {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.step-card {
+  width: 180px;
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.step-card h3 {
+  font-size: 40px;
+  color: #818cf8;
+}
+
+/* =========================
+   UPLOAD PAGE
+========================= */
+
+.upload-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0f172a;
+  padding: 20px;
+}
+
+.upload-card {
+  width: 450px;
+  background: #1e293b;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0px 0px 20px rgba(0,0,0,0.4);
+}
+
+.upload-title {
+  font-size: 35px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.upload-text {
+  color: #cbd5e1;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.file-input {
+  width: 100%;
+  padding: 12px;
+  background: #334155;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.file-name {
+  color: #818cf8;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.upload-button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #6366f1;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.upload-button:hover {
+  background: #4f46e5;
+  transform: scale(1.03);
+}
+
+/* =========================
+   PROCESSING PAGE
+========================= */
+
+.processing-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0f172a;
+  padding: 20px;
+}
+
+.processing-card {
+  width: 500px;
+  background: #1e293b;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0px 0px 25px rgba(0,0,0,0.4);
+}
+
+.processing-title {
+  font-size: 34px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.processing-text {
+  color: #cbd5e1;
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
+
+.loader {
+  width: 70px;
+  height: 70px;
+  border: 8px solid #334155;
+  border-top: 8px solid #6366f1;
+  border-radius: 50%;
+  margin: auto;
+  animation: spin 1s linear infinite;
+  margin-bottom: 40px;
+}
+
+@keyframes spin {
+
+  0% {
     transform: rotate(0deg);
   }
-  to {
+
+  100% {
     transform: rotate(360deg);
+  }
+}
+
+.processing-steps {
+  text-align: left;
+}
+
+.step-item {
+  background: #334155;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+/* =========================
+   CHATBOT PAGE
+========================= */
+
+.chatbot-container {
+  min-height: 100vh;
+  background: #0f172a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.chatbot-card {
+  width: 700px;
+  height: 85vh;
+  background: #1e293b;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0px 0px 25px rgba(0,0,0,0.4);
+}
+
+.chatbot-header {
+  background: #6366f1;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.user-message {
+  background: #6366f1;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 15px;
+  width: fit-content;
+  max-width: 70%;
+  margin-left: auto;
+  margin-bottom: 15px;
+}
+
+.bot-message {
+  background: #334155;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 15px;
+  width: fit-content;
+  max-width: 70%;
+  margin-bottom: 15px;
+}
+
+.chat-input-area {
+  display: flex;
+  padding: 20px;
+  background: #0f172a;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  background: #334155;
+  color: white;
+  font-size: 15px;
+}
+
+.send-button {
+  margin-left: 10px;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  background: #6366f1;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.send-button:hover {
+  background: #4f46e5;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  .dashboard-navbar {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .auth-card,
+  .upload-card,
+  .processing-card {
+    width: 90%;
+  }
+
+  .chatbot-card {
+    width: 100%;
+    height: 90vh;
+  }
+
+  .hero-title {
+    font-size: 40px;
+  }
+
+  .hero-text {
+    font-size: 16px;
+  }
+
+  .workflow-steps {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chat-input-area {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .send-button {
+    margin-left: 0;
+  }
+
+  .transaction-table {
+    display: block;
+    overflow-x: auto;
   }
 }

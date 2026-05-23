@@ -1,13 +1,26 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+// src/App.js
 
-import LandingPage from './pages/LandingPage';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import Upload from './pages/Upload';
-import Dashboard from './pages/Dashboard';
-import './App.css';
+import React from "react";
+
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+
+/* Pages */
+
+import Landing from "./pages/Landing";
+import Login from "./pages/Login";
+import Sign from "./pages/Sign";
+import Upload from "./pages/Upload";
+import Processing from "./pages/Processing";
+import Dashboard from "./pages/Dashboard";
+import Chatbot from "./pages/Chatbot";
+
+/* CSS */
+
+import "./App.css";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -26,12 +39,59 @@ const AnimatedRoutes = () => {
 };
 
 function App() {
+
   return (
-    <Router>
-      <div className="app-container">
-        <AnimatedRoutes />
-      </div>
-    </Router>
+
+    <BrowserRouter>
+
+      <Routes>
+
+        {/* Landing Page */}
+        <Route
+          path="/"
+          element={<Landing />}
+        />
+
+        {/* Login Page */}
+        <Route
+          path="/login"
+          element={<Login />}
+        />
+
+        {/* Signup Page */}
+        <Route
+          path="/signup"
+          element={<Sign />}
+        />
+
+        {/* Upload Page */}
+        <Route
+          path="/upload"
+          element={<Upload />}
+        />
+
+        {/* Processing Page */}
+        <Route
+          path="/processing"
+          element={<Processing />}
+        />
+
+        {/* Dashboard Page */}
+        <Route
+          path="/dashboard"
+          element={<Dashboard />}
+        />
+
+        {/* Chatbot Page */}
+        <Route
+          path="/chatbot"
+          element={<Chatbot />}
+        />
+
+      </Routes>
+
+    </BrowserRouter>
+
   );
 }
 

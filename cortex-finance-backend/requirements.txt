@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+python-multipart
+pdfplumber
+pandas
+scikit-learn
+langchain
+langchain-community
+langchain-huggingface
+faiss-cpu
+sentence-transformers
+google-generativeai
