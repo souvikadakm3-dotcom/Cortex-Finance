@@ -1,14 +1,20 @@
 // src/pages/Dashboard.js
 
 import React from "react";
-import "../index.css";
+import { Link } from "react-router-dom";
+
+import "../App.css";
 
 function Dashboard() {
+
   return (
+
     <div className="dashboard-container">
 
       {/* Navbar */}
+
       <div className="dashboard-navbar">
+
         <h1 className="dashboard-logo">
           AI Bank Analyzer
         </h1>
@@ -16,15 +22,23 @@ function Dashboard() {
         <button className="logout-button">
           Logout
         </button>
+
       </div>
 
       {/* Welcome Section */}
+
       <div className="welcome-section">
+
         <h2>Welcome Back 👋</h2>
-        <p>Your financial summary is ready.</p>
+
+        <p>
+          Your financial summary is ready.
+        </p>
+
       </div>
 
       {/* Summary Cards */}
+
       <div className="card-grid">
 
         <div className="summary-card">
@@ -49,7 +63,8 @@ function Dashboard() {
 
       </div>
 
-      {/* Transactions Section */}
+      {/* Transactions */}
+
       <div className="transaction-section">
 
         <h2>Recent Transactions</h2>
@@ -57,12 +72,14 @@ function Dashboard() {
         <table className="transaction-table">
 
           <thead>
+
             <tr>
               <th>Date</th>
               <th>Merchant</th>
               <th>Category</th>
               <th>Amount</th>
             </tr>
+
           </thead>
 
           <tbody>
@@ -95,6 +112,7 @@ function Dashboard() {
       </div>
 
       {/* AI Insights */}
+
       <div className="insight-section">
 
         <h2>AI Insights 🤖</h2>
@@ -110,6 +128,16 @@ function Dashboard() {
         <div className="insight-card">
           You can save ₹5,000 by reducing weekend spending.
         </div>
+
+        {/* Open Chatbot Button */}
+
+        <Link to="/chatbot">
+
+          <button className="chatbot-open-btn">
+            Open AI Assistant 🤖
+          </button>
+
+        </Link>
 
       </div>
 

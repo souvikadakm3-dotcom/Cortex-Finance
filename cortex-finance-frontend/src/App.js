@@ -13,8 +13,14 @@ import {
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Sign from "./pages/Sign";
-import Dashboard from "./pages/Dashboard";
 import Upload from "./pages/Upload";
+import Processing from "./pages/Processing";
+import Dashboard from "./pages/Dashboard";
+import Chatbot from "./pages/Chatbot";
+
+/* CSS */
+
+import "./App.css";
 
 function App() {
 
@@ -48,10 +54,22 @@ function App() {
           element={<Upload />}
         />
 
+        {/* Processing Page */}
+        <Route
+          path="/processing"
+          element={<Processing />}
+        />
+
         {/* Dashboard Page */}
         <Route
           path="/dashboard"
           element={<Dashboard />}
+        />
+
+        {/* Chatbot Page */}
+        <Route
+          path="/chatbot"
+          element={<Chatbot />}
         />
 
       </Routes>

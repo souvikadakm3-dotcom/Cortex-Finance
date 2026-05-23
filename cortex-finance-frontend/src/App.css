@@ -201,6 +201,28 @@ body {
   margin-bottom: 15px;
   color: #e2e8f0;
 }
+
+/* =========================
+   CHATBOT BUTTON
+========================= */
+
+.chatbot-open-btn {
+  margin-top: 20px;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  background: #6366f1;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.chatbot-open-btn:hover {
+  background: #4f46e5;
+  transform: scale(1.05);
+}
+
 /* =========================
    LANDING PAGE
 ========================= */
@@ -347,28 +369,6 @@ body {
   color: #818cf8;
 }
 
-/* Responsive */
-
-@media (max-width: 768px) {
-
-  .landing-navbar {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .hero-title {
-    font-size: 40px;
-  }
-
-  .hero-text {
-    font-size: 16px;
-  }
-
-  .workflow-steps {
-    flex-direction: column;
-    align-items: center;
-  }
-}
 /* =========================
    UPLOAD PAGE
 ========================= */
@@ -403,8 +403,6 @@ body {
   line-height: 1.6;
 }
 
-/* File Input */
-
 .file-input {
   width: 100%;
   padding: 12px;
@@ -416,15 +414,11 @@ body {
   cursor: pointer;
 }
 
-/* File Name */
-
 .file-name {
   color: #818cf8;
   margin-bottom: 20px;
   font-size: 14px;
 }
-
-/* Upload Button */
 
 .upload-button {
   width: 100%;
@@ -443,19 +437,165 @@ body {
   transform: scale(1.03);
 }
 
-/* Responsive */
+/* =========================
+   PROCESSING PAGE
+========================= */
 
-@media (max-width: 768px) {
+.processing-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0f172a;
+  padding: 20px;
+}
 
-  .upload-card {
-    width: 90%;
-    padding: 25px;
+.processing-card {
+  width: 500px;
+  background: #1e293b;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0px 0px 25px rgba(0,0,0,0.4);
+}
+
+.processing-title {
+  font-size: 34px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.processing-text {
+  color: #cbd5e1;
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
+
+.loader {
+  width: 70px;
+  height: 70px;
+  border: 8px solid #334155;
+  border-top: 8px solid #6366f1;
+  border-radius: 50%;
+  margin: auto;
+  animation: spin 1s linear infinite;
+  margin-bottom: 40px;
+}
+
+@keyframes spin {
+
+  0% {
+    transform: rotate(0deg);
   }
 
-  .upload-title {
-    font-size: 28px;
+  100% {
+    transform: rotate(360deg);
   }
 }
+
+.processing-steps {
+  text-align: left;
+}
+
+.step-item {
+  background: #334155;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+/* =========================
+   CHATBOT PAGE
+========================= */
+
+.chatbot-container {
+  min-height: 100vh;
+  background: #0f172a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.chatbot-card {
+  width: 700px;
+  height: 85vh;
+  background: #1e293b;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0px 0px 25px rgba(0,0,0,0.4);
+}
+
+.chatbot-header {
+  background: #6366f1;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.user-message {
+  background: #6366f1;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 15px;
+  width: fit-content;
+  max-width: 70%;
+  margin-left: auto;
+  margin-bottom: 15px;
+}
+
+.bot-message {
+  background: #334155;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 15px;
+  width: fit-content;
+  max-width: 70%;
+  margin-bottom: 15px;
+}
+
+.chat-input-area {
+  display: flex;
+  padding: 20px;
+  background: #0f172a;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  background: #334155;
+  color: white;
+  font-size: 15px;
+}
+
+.send-button {
+  margin-left: 10px;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  background: #6366f1;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.send-button:hover {
+  background: #4f46e5;
+}
+
 /* =========================
    RESPONSIVE
 ========================= */
@@ -467,8 +607,37 @@ body {
     gap: 15px;
   }
 
-  .auth-card {
+  .auth-card,
+  .upload-card,
+  .processing-card {
     width: 90%;
+  }
+
+  .chatbot-card {
+    width: 100%;
+    height: 90vh;
+  }
+
+  .hero-title {
+    font-size: 40px;
+  }
+
+  .hero-text {
+    font-size: 16px;
+  }
+
+  .workflow-steps {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chat-input-area {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .send-button {
+    margin-left: 0;
   }
 
   .transaction-table {
