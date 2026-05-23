@@ -369,7 +369,93 @@ body {
     align-items: center;
   }
 }
+/* =========================
+   UPLOAD PAGE
+========================= */
 
+.upload-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0f172a;
+  padding: 20px;
+}
+
+.upload-card {
+  width: 450px;
+  background: #1e293b;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0px 0px 20px rgba(0,0,0,0.4);
+}
+
+.upload-title {
+  font-size: 35px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.upload-text {
+  color: #cbd5e1;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* File Input */
+
+.file-input {
+  width: 100%;
+  padding: 12px;
+  background: #334155;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+/* File Name */
+
+.file-name {
+  color: #818cf8;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* Upload Button */
+
+.upload-button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #6366f1;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.upload-button:hover {
+  background: #4f46e5;
+  transform: scale(1.03);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+  .upload-card {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .upload-title {
+    font-size: 28px;
+  }
+}
 /* =========================
    RESPONSIVE
 ========================= */
