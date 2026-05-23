@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { LayoutDashboard, MessageSquare, Settings, Activity, LogOut, UploadCloud } from 'lucide-react';
-import './Dashboard.css';
+import '../pages/Dashboard.css';
 
 const Sidebar = () => {
   return (

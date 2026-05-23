@@ -1,80 +1,65 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Activity, Mail, Lock, ArrowRight } from 'lucide-react';
-import './Auth.css';
+import { useState } from "react";
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    // Simulate login
-    navigate('/upload');
+  const handleLogin = () => {
+    console.log(email, password);
   };
 
   return (
-    <div className="auth-container">
-      <div className="glow-orb orb-1"></div>
-      <div className="glow-orb orb-2"></div>
-      
-      <motion.div 
-        className="auth-card glass-panel"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        <div className="auth-header">
-          <Activity className="logo-icon" size={36} />
-          <h2>Welcome Back</h2>
-          <p>Enter your credentials to access your AI dashboard</p>
-        </div>
-        
-        <form onSubmit={handleLogin} className="auth-form">
-          <div className="input-group">
-            <Mail size={20} className="input-icon" />
-            <input 
-              type="email" 
-              placeholder="Email Address" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required 
-            />
-          </div>
-          
-          <div className="input-group">
-            <Lock size={20} className="input-icon" />
-            <input 
-              type="password" 
-              placeholder="Password" 
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required 
-            />
-          </div>
-          
-          <div className="auth-actions">
-            <a href="#" className="forgot-password">Forgot password?</a>
-          </div>
-          
-          <motion.button 
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="btn btn-primary auth-submit" 
-            type="submit"
-          >
-            Sign In <ArrowRight size={20} />
-          </motion.button>
-        </form>
-        
-        <div className="auth-footer">
-          Don't have an account? <Link to="/signup" className="text-gradient">Sign up here</Link>
-        </div>
-      </motion.div>
+    <div style={styles.container}>
+      <div style={styles.card}>
+        <h2>Login</h2>
+
+        <input
+          type="email"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+          style={styles.input}
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          style={styles.input}
+        />
+
+        <button onClick={handleLogin} style={styles.button}>
+          Login
+        </button>
+      </div>
     </div>
   );
-};
+}
 
-export default Login;
+const styles = {
+  container: {
+    display: "flex",
+    height: "100vh",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "#f5f6fa",
+  },
+  card: {
+    padding: 20,
+    borderRadius: 10,
+    background: "white",
+    width: 300,
+    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+  },
+  input: {
+    width: "100%",
+    padding: 10,
+    margin: "10px 0",
+  },
+  button: {
+    width: "100%",
+    padding: 10,
+    background: "blue",
+    color: "white",
+    border: "none",
+  },
+};

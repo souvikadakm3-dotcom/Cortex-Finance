@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Send, Bot, User, Sparkles } from 'lucide-react';
+import api from '../api/mockService';
 import './Chatbot.css';
 
 const initialMessages = [
@@ -34,7 +35,7 @@ const Chatbot = () => {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  const handleSend = (text) => {
+  const handleSend = async (text) => {
     if (!text.trim()) return;
 
     // Add user message
@@ -43,30 +44,21 @@ const Chatbot = () => {
     setInput('');
     setIsTyping(true);
 
-    // Simulate AI response delay for the "thinking state"
-    setTimeout(() => {
-      setIsTyping(false);
+    try {
+      // API Integration: POST /chat
+      const response = await api.post('/chat', { message: text });
+      
       const aiMsg = { 
         id: Date.now() + 1, 
         type: 'ai', 
-        text: generateAIResponse(text) 
+        text: response.data.reply 
       };
       setMessages(prev => [...prev, aiMsg]);
-    }, 2000);
-  };
-
-  const generateAIResponse = (query) => {
-    const q = query.toLowerCase();
-    if (q.includes('spending') || q.includes('expenses')) {
-      return "### 📊 Spending Analysis\nYou spent **₹24,532** last week.\n\nHere is your top spending breakdown:\n1. **Rent**: 40%\n2. **Food/Dining**: 35%\n3. **Shopping**: 15%\n\n> *AI Tip: To save more, consider reducing food delivery frequency.*";
+    } catch (err) {
+      setMessages(prev => [...prev, { id: Date.now() + 1, type: 'ai', text: "Sorry, I am having trouble connecting to the server right now." }]);
+    } finally {
+      setIsTyping(false);
     }
-    if (q.includes('subscriptions') || q.includes('recurring')) {
-      return "I found **3 active subscriptions** in your statement:\n\n| Service | Amount |\n| --- | --- |\n| Netflix | ₹649 |\n| Spotify | ₹119 |\n| Amazon Prime | ₹299 |\n\n**Total:** ₹1,067/month.";
-    }
-    if (q.includes('unusual')) {
-      return "⚠️ **Alert:** There is one unusual transaction detected:\n\n- **Swiggy (₹450)** at 10:23 AM today. \n\nThis is **40% higher** than your average weekday food delivery order.";
-    }
-    return "I can help you analyze your finances using AI. Try clicking one of the suggested prompts or ask me about your spending patterns!";
   };
 
   return (
@@ -105,9 +97,11 @@ const Chatbot = () => {
                   {msg.type === 'user' ? (
                     <p>{msg.text}</p>
                   ) : (
-                    <ReactMarkdown remarkPlugins={[remarkGfm]} className="markdown-body">
-                      {msg.text}
-                    </ReactMarkdown>
+                    <div className="markdown-body">
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {msg.text}
+                      </ReactMarkdown>
+                    </div>
                   )}
                 </div>
               </motion.div>

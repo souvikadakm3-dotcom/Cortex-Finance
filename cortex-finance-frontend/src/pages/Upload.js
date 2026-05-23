@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDropzone } from 'react-dropzone';
 import { motion } from 'framer-motion';
 import { UploadCloud, FileText, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import api from '../api/mockService';
 import './Upload.css';
 
 const Upload = () => {
@@ -29,15 +30,21 @@ const Upload = () => {
     maxFiles: 1
   });
 
-  const handleAnalyze = () => {
+  const handleAnalyze = async () => {
     if (!file) return;
     
     setIsUploading(true);
-    // Simulate AI processing
-    setTimeout(() => {
+    try {
+      // API Integration: POST /upload
+      const formData = new FormData();
+      formData.append('file', file);
+      await api.post('/upload', formData);
+      navigate('/dashboard');
+    } catch (err) {
+      setError('Upload failed. Please try again.');
+    } finally {
       setIsUploading(false);
-      navigate('/dashboard'); // Go to dashboard after processing
-    }, 3000);
+    }
   };
 
   return (
